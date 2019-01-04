@@ -57,4 +57,8 @@ public class NetworkConnection {
         }
         return packet;
     }
+
+    public boolean isValid() {
+        return socket.isConnected();
+    }
 }

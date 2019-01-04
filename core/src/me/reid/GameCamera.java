@@ -1,15 +1,14 @@
 package me.reid;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import me.reid.Screens.PlayScreen;
 
 public class GameCamera {
 
-    private Game game;
+    private PlayScreen game;
     private OrthographicCamera camera;
 
-    public GameCamera(Game game, int width, int height) {
+    public GameCamera(PlayScreen game, int width, int height) {
         this.game = game;
         this.camera = new OrthographicCamera();
         this.camera.setToOrtho(false, width, height);

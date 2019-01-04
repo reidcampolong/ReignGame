@@ -1,6 +1,5 @@
 package me.reid.Network.Connection;
 
-import com.sun.security.ntlm.Server;
 import me.reid.Network.Packet.Packet;
 import me.reid.Network.Packet.PacketLoginRequest;
 
@@ -10,7 +9,7 @@ import java.net.UnknownHostException;
 
 public class ConnectionHandler {
 
-    private String username;
+    public static String username;
 
     private InetAddress serverAddress;
     private String host;
@@ -19,10 +18,10 @@ public class ConnectionHandler {
     private NetworkConnection connection;
     private ServerInputThread inputThread;
 
-    public ConnectionHandler(String username, String host, int port) {
+    public ConnectionHandler(String playerName, String host, int port) {
+        username = playerName;
         this.host = host;
         this.port = port;
-        this.username = username;
         try {
             this.serverAddress = InetAddress.getByName(host);
         } catch (UnknownHostException e) {
@@ -59,6 +58,10 @@ public class ConnectionHandler {
         Packet movePacket = new PacketMoveChange(username, x, y);
         connection.send(movePacket);
     }*/
+
+    public boolean isOpen() {
+        return connection.isValid();
+    }
 
     /**
      * Receive a Datagram Packet from the server

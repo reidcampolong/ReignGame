@@ -9,6 +9,7 @@ import me.reid.GFX.GameObject;
 import me.reid.Game;
 import me.reid.Network.Connection.ConnectionHandler;
 import me.reid.Network.Packet.PacketPlayerMove;
+import me.reid.Screens.PlayScreen;
 
 public class Player implements GameObject {
 
@@ -48,8 +49,8 @@ public class Player implements GameObject {
             didMove = true;
         }
 
-        if(didMove)
-            Game.i().getConnectionHandler().sendPacket(new PacketPlayerMove(Game.username, getX(), getY()));
+        if (didMove)
+            Game.i().getConnectionHandler().sendPacket(new PacketPlayerMove(ConnectionHandler.username, getX(), getY()));
     }
 
     public void dispose() {

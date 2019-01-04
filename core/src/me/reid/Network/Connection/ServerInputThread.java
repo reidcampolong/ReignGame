@@ -1,9 +1,9 @@
 package me.reid.Network.Connection;
 
-import me.reid.Entities.NetPlayer;
 import me.reid.Game;
 import me.reid.Log;
 import me.reid.Network.Packet.*;
+import me.reid.Screens.PlayScreen;
 
 import java.net.DatagramPacket;
 import java.net.InetAddress;
@@ -70,13 +70,13 @@ public class ServerInputThread extends Thread {
 
     public void playerLogin(PacketPlayerLogin packet) {
         Log.i("Recevied new player login for " + packet.getUsername());
-        Game.i().getNetPlayerHandler().createNewPlayer(packet.getUsername(), packet.getX(), packet.getY());
+        PlayScreen.i().getNetPlayerHandler().createNewPlayer(packet.getUsername(), packet.getX(), packet.getY());
     }
 
     public void playerMove(PacketPlayerMove packet) {
-        Log.i("Received move packet for player " + packet.getUsername() + "  YOU ARE " + Game.username );
+        Log.i("Received move packet for player " + packet.getUsername() + "  YOU ARE " + ConnectionHandler.username );
 
-        Game.i().getNetPlayerHandler().getPlayer(packet.getUsername()).setPosition(packet.getX(), packet.getY());
+        PlayScreen.i().getNetPlayerHandler().getPlayer(packet.getUsername()).setPosition(packet.getX(), packet.getY());
     }
 
 
