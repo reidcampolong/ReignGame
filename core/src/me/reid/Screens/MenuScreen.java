@@ -16,6 +16,7 @@ public class MenuScreen implements Screen, Input.TextInputListener {
     private SpriteBatch batch;
     private float x, y;
     private Texture joinTexture;
+    private boolean waitingOnInput;
 
     private Game game;
 
@@ -43,8 +44,12 @@ public class MenuScreen implements Screen, Input.TextInputListener {
 
     public void update() {
         if (Gdx.input.justTouched() && Utilities.isInBounds(Gdx.input.getX(), Gdx.input.getY(), (int) x, (int) y, joinTexture)) {
-            Gdx.input.getTextInput(this, "Please enter username", "username", "");
-            //game.setScreen(new PlayScreen(game));
+            askForInput("Please enter username", "myfunname", "");
+            String username = inputText;
+
+            askForInput("Please enter port:ip", "reidc.duckdns.org:1069", "");
+            String[] address = inputText.split(":");
+            game.setScreen(new PlayScreen(game, username, address[0], Integer.parseInt(address[1])));
         }
     }
 
@@ -75,11 +80,28 @@ public class MenuScreen implements Screen, Input.TextInputListener {
 
     @Override
     public void input(String text) {
+        System.out.println("Called input");
         this.inputText = text;
+        setWaiting(false);
     }
 
     @Override
     public void canceled() {
+        setWaiting(false);
+    }
 
+    public synchronized boolean isWaiting() {
+        return waitingOnInput;
+    }
+
+    public synchronized void setWaiting(boolean waiting) {
+        this.waitingOnInput = waiting;
+    }
+
+    public void askForInput(String prompt, String text, String hint) {
+        setWaiting(true);
+        Gdx.input.getTextInput(this, prompt, text, hint);
+        while (isWaiting())
+            continue;
     }
 }
