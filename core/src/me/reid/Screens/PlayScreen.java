@@ -3,14 +3,11 @@ package me.reid.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import me.reid.Entities.NetPlayerHandler;
+import me.reid.Entities.Networked.NetPlayerHandler;
 import me.reid.Entities.Player;
 import me.reid.Game;
 import me.reid.GameCamera;
-import me.reid.Network.Connection.ConnectionHandler;
 import me.reid.World.Map;
-
-import javax.swing.*;
 
 public class PlayScreen implements Screen {
 

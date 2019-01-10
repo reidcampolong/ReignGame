@@ -3,6 +3,7 @@ package me.reid;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import me.reid.GFX.TextureManager;
 import me.reid.Network.Connection.ConnectionHandler;
 import me.reid.Screens.MenuScreen;
 import me.reid.Screens.PlayScreen;
@@ -12,11 +13,14 @@ public class Game extends com.badlogic.gdx.Game {
     private static Game instance;
     private ConnectionHandler connectionHandler;
 
+    private TextureManager textureManager;
+
     @Override
     public void create() {
         instance = this;
-        setScreen(new MenuScreen(this));
 
+        textureManager = new TextureManager();
+        setScreen(new MenuScreen(this));
     }
 
     public void createConnectionHandler(String username, String address, int port) {
@@ -33,6 +37,7 @@ public class Game extends com.badlogic.gdx.Game {
     @Override
     public void dispose() {
         super.dispose();
+        textureManager.dispose();
     }
 
     public ConnectionHandler getConnectionHandler() { return connectionHandler; }

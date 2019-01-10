@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import me.reid.GFX.GameObject;
+import me.reid.GFX.TextureManager;
 import me.reid.Game;
 import me.reid.Network.Connection.ConnectionHandler;
 import me.reid.Network.Packet.PacketPlayerMove;
@@ -13,13 +14,12 @@ import me.reid.Screens.PlayScreen;
 
 public class Player implements GameObject {
 
-    private float speed;
-    public static Texture texture;
+    private Texture texture;
     private PositionHandler mover;
+    private boolean didMove = false;
 
     public Player(float startX, float startY) {
-        speed = 5;
-        texture = new Texture("player.png");
+        texture = TextureManager.playerTexture;
         mover = new PositionHandler(new Vector2(), 5);
         mover.setPosition(startX, startY);
     }
@@ -31,7 +31,6 @@ public class Player implements GameObject {
 
     @Override
     public void update() {
-        boolean didMove = false;
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             mover.moveUp();
             didMove = true;

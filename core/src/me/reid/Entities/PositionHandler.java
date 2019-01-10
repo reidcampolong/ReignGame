@@ -40,4 +40,8 @@ public class PositionHandler {
     public float getY() {
         return position.y;
     }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
 }

@@ -1,19 +1,20 @@
-package me.reid.Entities;
+package me.reid.Entities.Networked;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
+import me.reid.Entities.Player;
+import me.reid.Entities.PositionHandler;
 import me.reid.GFX.GameObject;
+import me.reid.GFX.TextureManager;
 
 public class NetPlayer implements GameObject {
 
-    private float speed;
     private Texture texture;
     private PositionHandler mover;
 
     public NetPlayer(float startX, float startY) {
-        speed = 5;
-        texture = Player.texture;
+        texture = TextureManager.playerTexture;
         mover = new PositionHandler(new Vector2(), 5);
         mover.setPosition(startX, startY);
     }

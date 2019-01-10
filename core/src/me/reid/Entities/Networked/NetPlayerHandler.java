@@ -1,7 +1,6 @@
-package me.reid.Entities;
+package me.reid.Entities.Networked;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
-import me.reid.Game;
 import me.reid.Screens.PlayScreen;
 
 import java.util.HashMap;

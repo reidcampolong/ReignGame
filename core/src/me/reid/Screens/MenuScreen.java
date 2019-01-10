@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import me.reid.GFX.TextureManager;
 import me.reid.Game;
 import me.reid.Log;
 import me.reid.Utilities;
@@ -23,7 +24,7 @@ public class MenuScreen implements Screen, Input.TextInputListener {
     public MenuScreen(Game game) {
         this.game = game;
         this.batch = new SpriteBatch();
-        this.joinTexture = new Texture("joinButton.png");
+        this.joinTexture = TextureManager.joinButtonTexture;
         this.x = (Gdx.graphics.getWidth() / 2) - (joinTexture.getWidth() / 2);
         this.y = (Gdx.graphics.getHeight() / 2) - (joinTexture.getHeight() / 2);
     }
@@ -80,7 +81,6 @@ public class MenuScreen implements Screen, Input.TextInputListener {
 
     @Override
     public void input(String text) {
-        System.out.println("Called input");
         this.inputText = text;
         setWaiting(false);
     }
