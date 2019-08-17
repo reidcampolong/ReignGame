@@ -71,7 +71,7 @@ public class ClientInputThread extends Thread {
         if (server.getNetworkServer().isValidName(requestPacket.getUsername())) {
 
             // Send back successful and notify all other players
-            server.getNetworkServer().sendPacket(new PacketLoginSuccess(requestPacket.getUsername(), 32, 32), address, port);
+            server.getNetworkServer().sendPacket(new PacketLoginSuccess(requestPacket.getUsername(), 300, 300), address, port);
             server.getNetworkServer().notifyAllToCurrentPlayer(address, port);
             server.getNetworkServer().notifyAllOfNewPlayer(requestPacket.getUsername());
             server.getNetworkServer().addConnection(requestPacket.getUsername(), address, port);

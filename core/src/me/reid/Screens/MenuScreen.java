@@ -48,7 +48,7 @@ public class MenuScreen implements Screen, Input.TextInputListener {
             askForInput("Please enter username", "myfunname", "");
             String username = inputText;
 
-            askForInput("Please enter port:ip", "ip:1069", "");
+            askForInput("Please enter port:ip", "localhost:1069", "");
             String[] address = inputText.split(":");
             game.setScreen(new PlayScreen(game, username, address[0], Integer.parseInt(address[1])));
         }

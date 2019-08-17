@@ -24,7 +24,7 @@ public class PlayScreen implements Screen {
         instance = this;
         this.game = game;
 
-        player = new Player(32, 32);
+        player = new Player(300, 300);
         camera = new GameCamera(this, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         map = new Map(this, "map.tmx");
 

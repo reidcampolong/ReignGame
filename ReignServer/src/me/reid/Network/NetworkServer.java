@@ -88,7 +88,7 @@ public class NetworkServer {
 
     public void notifyAllOfNewPlayer(String username) {
         for (Map.Entry<String, ClientConnection> entry : userConnections.entrySet())
-            sendPacket(new PacketPlayerLogin(username, 32, 32), entry.getValue().getAddress(), entry.getValue().getPort());
+            sendPacket(new PacketPlayerLogin(username, 300, 300), entry.getValue().getAddress(), entry.getValue().getPort());
     }
 
     public void notifyAllToCurrentPlayer(InetAddress address, int port) {

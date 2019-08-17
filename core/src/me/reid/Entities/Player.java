@@ -10,7 +10,6 @@ import me.reid.GFX.TextureManager;
 import me.reid.Game;
 import me.reid.Network.Connection.ConnectionHandler;
 import me.reid.Network.Packet.PacketPlayerMove;
-import me.reid.Screens.PlayScreen;
 
 public class Player implements GameObject {
 
